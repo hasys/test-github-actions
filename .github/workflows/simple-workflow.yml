@@ -44,6 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: adjustTargetRevision
     steps:
+      - uses: actions/checkout@v3
       - name: Do some work
         run: |
           echo hello world from different job
@@ -54,6 +55,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: doWork
     steps:
+      - uses: actions/checkout@v3
       - name: Revert the Target Revision value
         run: |
           T_HASH=`git log -n 2 main --pretty=format:"%H"`
