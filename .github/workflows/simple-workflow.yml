@@ -26,4 +26,7 @@ jobs:
           echo There is a GIT hash of the latest commit on main branch:
           T_HASH=`git log -n 1 main --pretty=format:"%H"`
           echo $T_HASH
+          sed -i -e "s/    targetRevision: main/    targetRevision: $T_HASH/g" ./folder_1/folder_2/file_name.yml
           echo The end of the GIT hash
+          echo Full content of the file after edit:
+          cat ./folder_1/folder_2/file_name.yml
