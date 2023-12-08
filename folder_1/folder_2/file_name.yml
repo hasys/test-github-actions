@@ -1,0 +1,43 @@
+# Sample YAML Configuration
+
+# Application settings
+app:
+  name: My Awesome App
+  version: 1.0.0
+  environment: production
+
+# Database configuration
+database:
+  host: localhost
+  port: 5432
+  username: myuser
+  password: mypassword
+  database_name: mydb
+
+# Required Metadata
+metadata:
+  name: random-name
+
+# Important spec
+spec:
+  value1: is here
+  source:
+    path: some_path_to_production/hello
+    targetRevision: main
+    name: change_this
+  destination:
+    server: http://localhost:6734/hello
+
+# API endpoints
+api:
+  - endpoint: /users
+    method: GET
+    description: Get a list of users
+  - endpoint: /products
+    method: POST
+    description: Create a new product
+
+# Logging settings
+logging:
+  level: info
+  file_path: /var/log/myapp.log
