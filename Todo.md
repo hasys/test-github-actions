@@ -1,8 +1,8 @@
 # TODO
 - [X] Add manual workflow
 - [X] Read and print to the console last commit hash
-- [ ] Modify file with replacing main to latest hash
-- [ ] Commit and push
-- [ ] "Do some job in the next task"
+- [X] Modify file with replacing main to latest hash
+- [X] Commit and push
+- [X] "Do some job in the next task"
 - [ ] Replace commit hash back to main
 - [ ] Commit and push changes
