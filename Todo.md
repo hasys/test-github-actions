@@ -4,5 +4,5 @@
 - [X] Modify file with replacing main to latest hash
 - [X] Commit and push
 - [X] "Do some job in the next task"
-- [ ] Replace commit hash back to main
-- [ ] Commit and push changes
+- [X] Replace commit hash back to main
+- [X] Commit and push changes
