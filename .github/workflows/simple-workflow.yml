@@ -24,5 +24,6 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo There is a GIT hash of the latest commit on main branch:
-          git log -n 1 main --pretty=format:"%H"
+          T_HASH=`git log -n 1 main --pretty=format:"%H"`
+          echo $T_HASH
           echo The end of the GIT hash
