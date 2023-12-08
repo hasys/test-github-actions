@@ -27,7 +27,7 @@ jobs:
       - name: Modify Target Revision
         run: |
           echo There is a GIT hash of the latest commit on main branch:
-          T_HASH=`git log -n 1 main --pretty=format:"%H"`
+          T_HASH=`git show HEAD --pretty=format:"%H" --no-patch`
           echo $T_HASH
           sed -i -e "s/    targetRevision: main/    targetRevision: $T_HASH/g" ./folder_1/folder_2/file_name.yml
           echo The end of the GIT hash
@@ -59,7 +59,7 @@ jobs:
       - name: Revert the Target Revision value
         run: |
           git pull --rebase origin main
-          T_HASH=`git log -n 2 main --pretty=format:"%H"`
+          T_HASH=`git show HEAD~1 --pretty=format:"%H" --no-patch`
           echo $T_HASH
           sed -i -e "s/    targetRevision: $T_HASH/    targetRevision: main/g" ./folder_1/folder_2/file_name.yml
           cat ./folder_1/folder_2/file_name.yml      
