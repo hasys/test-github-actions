@@ -37,7 +37,6 @@ jobs:
           git config user.name 'GitHub'
           git config user.email 'noreply@github.com'
           git commit -am "Update Target Revision"
-          git log -2
           git push
 
   doWork:
@@ -65,7 +64,7 @@ jobs:
           
           git config user.name 'GitHub'
           git config user.email 'noreply@github.com'
-          git commit -am "Update Target Revision"
-          git log -3
+          git status
+          git commit -am "Revert changes"
           git push
           
