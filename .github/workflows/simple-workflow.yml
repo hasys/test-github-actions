@@ -61,7 +61,9 @@ jobs:
           T_HASH=`git log -n 2 main --pretty=format:"%H"`
           echo $T_HASH
           sed -i -e "s/    targetRevision: $T_HASH/    targetRevision: main/g" ./folder_1/folder_2/file_name.yml
-                    git config user.name 'GitHub'
+          cat ./folder_1/folder_2/file_name.yml      
+          
+          git config user.name 'GitHub'
           git config user.email 'noreply@github.com'
           git commit -am "Update Target Revision"
           git log -3
