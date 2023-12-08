@@ -23,7 +23,7 @@ spec:
   value1: is here
   source:
     path: some_path_to_production/hello
-    targetRevision: main
+    targetRevision: 6afc4771d8b99e90e7f6f52340fcae845c3daf5a
     name: change_this
   destination:
     server: http://localhost:6734/hello
