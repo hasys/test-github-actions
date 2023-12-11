@@ -43,7 +43,8 @@ jobs:
     # Execute after adjustTargetRevision
     needs: adjustTargetRevision
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        # We need this to pull not the commit where Workflow was started but actual main branch.
         with:
           repository: hasys/test-github-actions
           ref: refs/heads/main
@@ -56,10 +57,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: doWork
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          repository: hasys/test-github-actions
+          ref: refs/heads/main
       - name: Revert the Target Revision value
         run: |
-          git pull --rebase origin main
           T_HASH=`git show HEAD~1 --pretty=format:"%H" --no-patch`
           echo $T_HASH
           sed -i -e "s/    targetRevision: $T_HASH/    targetRevision: main/g" ./folder_1/folder_2/file_name.yml  
