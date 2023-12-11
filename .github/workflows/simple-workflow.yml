@@ -58,11 +58,9 @@ jobs:
     needs: doWork
     steps:
       - uses: actions/checkout@v4
-        with:
-          repository: hasys/test-github-actions
-          ref: refs/heads/main
       - name: Revert the Target Revision value
         run: |
+          git pull --rebase origin main
           T_HASH=`git show HEAD~1 --pretty=format:"%H" --no-patch`
           echo $T_HASH
           sed -i -e "s/    targetRevision: $T_HASH/    targetRevision: main/g" ./folder_1/folder_2/file_name.yml  
