@@ -44,11 +44,11 @@ jobs:
     needs: adjustTargetRevision
     steps:
       - uses: actions/checkout@v3
+        with:
+          repository: hasys/test-github-actions
+          ref: refs/heads/main
       - name: Do some work
         run: |
-          # checkout happens once at workflow start and than copied, not pulled every job
-          # so we need to pull latest changes (our Modify Target Revision change)
-          git pull --rebase origin main
           cat ./folder_1/folder_2/file_name.yml
 
   # Revert the change, make the Target Revision main again
