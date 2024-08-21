@@ -1,0 +1,43 @@
+name: Branch tests
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+  workflow_call:
+    inputs:
+      exit_status:
+        description: 'En exit status to test the workflow'
+        default: 0
+        required: true
+        type: number
+
+
+jobs:
+  first_job_exit_zero:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First job exit zero
+        run: |
+          echo "First job is running"
+          exit 0
+          echo "Should not be printed. First Job."
+
+  second_job_exit_one:
+    runs-on: ubuntu-latest
+    needs: first_job_exit_zero
+    steps:
+      - name: Second job exit positive
+        run: |
+          echo "Second job is running with fail"
+          exit ${{ inputs.exit_status }}
+
+  third_job_exit_negative:
+    runs-on: ubuntu-latest
+    needs: second_job_exit_one
+    if: ${{ failure() }}
+    steps:
+      - name: Second job exit negative
+        run: |
+          echo "Failure Happened, job is running"
+          exit -0
